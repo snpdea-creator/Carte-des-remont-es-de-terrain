@@ -62,7 +62,7 @@ function selectRegion(code) {
   detail.innerHTML = html;
 }
 
-document.querySelectorAll('.region, .bubble').forEach((el) => {
+document.querySelectorAll('.region').forEach((el) => {
   el.addEventListener('mouseenter', () => selectRegion(el.dataset.region));
   el.addEventListener('click', () => selectRegion(el.dataset.region));
 });
