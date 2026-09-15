@@ -75,6 +75,7 @@ def main():
             unmatched.append(region_raw)
             continue
         entry = {"label": region_raw}
+        any_filled = False
         for col_idx, header in field_cols:
             cell = row[col_idx]
             color = None
@@ -82,8 +83,12 @@ def main():
                 rgb = cell.fill.fgColor.rgb
                 if rgb and rgb != "00000000":
                     color = "#" + rgb[-6:]
-            entry[slugify(header)] = {"text": cell.value if cell.value is not None else "Non renseigné", "color": color}
-        out[code] = entry
+            filled = cell.value is not None and str(cell.value).strip() != ""
+            if filled:
+                any_filled = True
+            entry[slugify(header)] = {"text": cell.value if filled else "Non renseigné", "color": color}
+        if any_filled:
+            out[code] = entry
 
     out_path = f"data/{theme_name}.json"
     with open(out_path, "w", encoding="utf-8") as f:
