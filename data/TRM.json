@@ -45,7 +45,7 @@
   "NAQ": {
     "label": "Nouvelle-Aquitaine",
     "date_retour_fiche_de_service": {
-      "text": "46280",
+      "text": "15-sept",
       "color": "#92D050"
     },
     "informations_envoi_retour_trm": {
@@ -56,7 +56,7 @@
   "ARA": {
     "label": "Auvergne-Rhône-Alpes",
     "date_retour_fiche_de_service": {
-      "text": "46281",
+      "text": "16-sept",
       "color": "#92D050"
     },
     "informations_envoi_retour_trm": {
@@ -122,7 +122,7 @@
   "PDL": {
     "label": "Pays de la Loire",
     "date_retour_fiche_de_service": {
-      "text": "46280",
+      "text": "15-Sept",
       "color": "#92D050"
     },
     "informations_envoi_retour_trm": {
