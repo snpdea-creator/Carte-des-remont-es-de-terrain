@@ -7,9 +7,22 @@ const THEMES = {
   TRM: { file: 'data/TRM.json' }
 };
 
+// Noms forcés à l'affichage, quelle que soit l'écriture dans le fichier source.
+const DISPLAY_NAMES = {
+  DROM: 'DROM-COM'
+};
+
 let currentData = {};
 let currentFields = [];
 let currentRegion = null;
+
+// Une réponse est "complète" si tous les champs du thème sont renseignés.
+function isComplete(region) {
+  return currentFields.every(([key]) => {
+    const f = region[key];
+    return f && f.text && f.text !== 'Non renseigné';
+  });
+}
 
 async function loadTheme(themeName) {
   const cfg = THEMES[themeName];
@@ -23,8 +36,11 @@ async function loadTheme(themeName) {
 
     document.querySelectorAll('[data-region]').forEach((el) => {
       const code = el.dataset.region;
-      el.classList.toggle('has-data', code !== '_fields' && !!currentData[code]);
-      el.classList.remove('active');
+      const region = code !== '_fields' ? currentData[code] : null;
+      el.classList.remove('complete', 'partial', 'active');
+      if (region) {
+        el.classList.add(isComplete(region) ? 'complete' : 'partial');
+      }
     });
 
     currentRegion = null;
@@ -44,7 +60,7 @@ function selectRegion(code, fallbackName) {
 
   const detail = document.getElementById('detail');
   const region = currentData[code];
-  const name = (region && region.label) || fallbackName || code;
+  const name = DISPLAY_NAMES[code] || (region && region.label) || fallbackName || code;
 
   let html = '<p style="font-weight:700;font-size:14px;margin:0 0 8px;">' + name + '</p>';
 
