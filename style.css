@@ -97,29 +97,30 @@ h1 {
   fill: var(--accent-text);
 }
 
-.bubble {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 6px 12px;
-  border-radius: 18px;
-  border: 1px dashed var(--border-strong);
-  background: var(--panel);
-  color: var(--text-muted);
-  font-size: 12px;
+.drom-strip {
+  margin-top: 12px;
+  width: 92%;
+  max-width: 100%;
+}
+
+#drom-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.drom-label {
+  font-size: 8px;
   font-weight: 700;
-  cursor: pointer;
-  transition: background-color .15s, border-color .15s, box-shadow .15s;
+  fill: var(--text-muted);
+  text-anchor: middle;
+  pointer-events: none;
+  user-select: none;
 }
 
-.bubble.has-data {
-  background: var(--accent-bg);
-  color: var(--accent-text);
-  border-color: var(--accent-border);
-}
-
-.bubble:hover,
-.bubble.active {
-  box-shadow: 0 0 0 2px var(--accent-border);
+.drom-label.has-data {
+  fill: var(--accent-text);
 }
 
 .legend {
