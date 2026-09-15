@@ -128,11 +128,14 @@ async function handleFile(file, themeName) {
     const code = REGION_CODES[normalize(regionRaw)];
     if (!code) { unmatched.push(regionRaw); continue; }
     const entry = { label: regionRaw };
+    let anyFilled = false;
     fieldCols.forEach(([i, h]) => {
       const cell = cells[i] || { value: null, color: null };
-      entry[slugify(h)] = { text: cell.value || 'Non renseigné', color: cell.color };
+      const filled = cell.value !== null && cell.value !== undefined && String(cell.value).trim() !== '';
+      if (filled) anyFilled = true;
+      entry[slugify(h)] = { text: filled ? cell.value : 'Non renseigné', color: cell.color };
     });
-    out[code] = entry;
+    if (anyFilled) out[code] = entry;
   }
 
   return { out, unmatched, regionCount: Object.keys(out).length - 1 };
