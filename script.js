@@ -3,7 +3,8 @@
 // thème se limite à : générer data/<NOM>.json avec convert.py, l'ajouter ici,
 // puis ajouter une <option> dans index.html.
 const THEMES = {
-  DDEA: { file: 'data/DDEA.json' }
+  DDEA: { file: 'data/DDEA.json' },
+  TRM: { file: 'data/TRM.json' }
 };
 
 let currentData = {};
