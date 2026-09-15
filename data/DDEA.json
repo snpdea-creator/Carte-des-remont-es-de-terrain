@@ -10,7 +10,7 @@
     ],
     [
       "lettre_de_mission_recue_signee",
-      "Lettre de mission reçue ? Signée?"
+      "Lettre de mission reçue ? Signée"
     ],
     [
       "annonce_de_remuneration_de_la_mission",
@@ -186,6 +186,25 @@
     "annonce_de_remuneration_de_la_mission": {
       "text": "Aucune information",
       "color": "#FF0000"
+    }
+  },
+  "DROM": {
+    "label": "DROM-COM",
+    "liste_ddea": {
+      "text": "Mayotte – chef de SFD\nAutres DROM-COM collecte en cours",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Non renseigné",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Non renseigné",
+      "color": null
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Non renseigné",
+      "color": null
     }
   },
   "PDL": {
