@@ -6,8 +6,10 @@
   --text: #2c2c2a;
   --text-muted: #767468;
   --accent-bg: #dfe9e2;
-  --accent-text: #1f4a34;
-  --accent-border: #6fae8b;
+  --accent-text: #1b3a5c;
+  --accent-border: #6f9ec4;
+  --blue-complete: #7da9ce;
+  --blue-partial: #d3e3f0;
 }
 
 * { box-sizing: border-box; }
@@ -73,8 +75,12 @@ h1 {
   transition: fill .15s;
 }
 
-.region.has-data {
-  fill: var(--accent-bg);
+.region.complete {
+  fill: var(--blue-complete);
+}
+
+.region.partial {
+  fill: var(--blue-partial);
 }
 
 .region:hover,
@@ -114,6 +120,10 @@ h1 {
   border: 1px solid var(--border-strong);
   display: inline-block;
 }
+
+.swatch-none { background: var(--panel); }
+.swatch-partial { background: var(--blue-partial); }
+.swatch-complete { background: var(--blue-complete); }
 
 .controls {
   flex: 1;
