@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convertir un export .xlsx en JSON</title>
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <h1>Convertir un export Excel en données du site</h1>
+  <p class="subtitle">
+    Tout se passe dans ton navigateur : le fichier n'est envoyé nulle part.
+    Aucune installation nécessaire.
+  </p>
+
+  <div id="detail">
+    <label for="theme-name">Nom du thème (ex. DDEA)</label>
+    <input id="theme-name" type="text" value="DDEA" style="width:220px;padding:8px 10px;border-radius:6px;border:1px solid var(--border-strong);font-size:14px;margin-bottom:16px;">
+
+    <label for="file-input">Fichier .xlsx exporté</label>
+    <input id="file-input" type="file" accept=".xlsx" style="margin-bottom:16px;display:block;">
+
+    <div id="result"></div>
+  </div>
+</div>
+
+<script>
+const REGION_CODES = {
+  "ile de france": "IDF", "normandie": "NOR", "hauts de france": "HDF",
+  "grand est": "GES", "bretagne": "BRE", "pays de la loire": "PDL",
+  "centre val de loire": "CVL", "bourgogne franche comte": "BFC",
+  "nouvelle aquitaine": "NAQ", "auvergne rhone alpes": "ARA",
+  "occitanie": "OCC", "provence alpes cote d azur": "PACACOR",
+  "paca": "PACACOR", "corse": "PACACOR", "outre mer": "DROM", "drom com": "DROM"
+};
+
+function normalize(text) {
+  return text.normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[^a-zA-Z0-9]+/g, ' ').trim().toLowerCase();
+}
+function slugify(text) {
+  return normalize(text).replace(/ +/g, '_');
+}
+function colLetters(ref) {
+  return ref.match(/^[A-Z]+/)[0];
+}
+function colIndex(letters) {
+  let n = 0;
+  for (const ch of letters) n = n * 26 + (ch.charCodeAt(0) - 64);
+  return n - 1;
+}
+
+async function handleFile(file, themeName) {
+  const zip = await JSZip.loadAsync(file);
+  const sheetXml = await zip.file('xl/worksheets/sheet1.xml').async('string');
+  const stylesXml = await zip.file('xl/styles.xml').async('string');
+  const sstFile = zip.file('xl/sharedStrings.xml');
+  const sstXml = sstFile ? await sstFile.async('string') : null;
+
+  const parser = new DOMParser();
+  const sheetDoc = parser.parseFromString(sheetXml, 'application/xml');
+  const stylesDoc = parser.parseFromString(stylesXml, 'application/xml');
+
+  // shared strings
+  const sst = [];
+  if (sstXml) {
+    const sstDoc = parser.parseFromString(sstXml, 'application/xml');
+    sstDoc.querySelectorAll('si').forEach((si) => {
+      const parts = [];
+      si.querySelectorAll('t').forEach((t) => parts.push(t.textContent));
+      sst.push(parts.join(''));
+    });
+  }
+
+  // fill colors per cellXfs index
+  const fills = [];
+  stylesDoc.querySelectorAll('fills > fill').forEach((f) => {
+    const fg = f.querySelector('patternFill[patternType="solid"] > fgColor');
+    fills.push(fg ? fg.getAttribute('rgb') : null);
+  });
+  const cellXfs = [];
+  stylesDoc.querySelectorAll('cellXfs > xf').forEach((xf) => {
+    cellXfs.push(parseInt(xf.getAttribute('fillId') || '0', 10));
+  });
+  function styleColor(s) {
+    if (s === null || s === undefined) return null;
+    const fillId = cellXfs[parseInt(s, 10)];
+    const rgb = fills[fillId];
+    if (!rgb || rgb === '00000000') return null;
+    return '#' + rgb.slice(-6);
+  }
+  function cellValue(c) {
+    const t = c.getAttribute('t');
+    const vEl = c.querySelector('v');
+    if (!vEl) return null;
+    const v = vEl.textContent;
+    if (t === 's') return sst[parseInt(v, 10)];
+    return v;
+  }
+
+  // rows -> array of {cells: {colIndex: {value, color}}}
+  const rows = [];
+  sheetDoc.querySelectorAll('row').forEach((row) => {
+    const cells = {};
+    row.querySelectorAll('c').forEach((c) => {
+      const idx = colIndex(colLetters(c.getAttribute('r')));
+      cells[idx] = { value: cellValue(c), color: styleColor(c.getAttribute('s')) };
+    });
+    rows.push(cells);
+  });
+
+  const headerRow = rows[0];
+  const maxCol = Math.max(...Object.keys(headerRow).map(Number));
+  const fieldCols = [];
+  for (let i = 2; i <= maxCol; i++) {
+    if (headerRow[i]) fieldCols.push([i, headerRow[i].value]);
+  }
+  const fields = fieldCols.map(([, h]) => [slugify(h), h]);
+
+  const out = { _fields: fields };
+  const unmatched = [];
+  for (let r = 1; r < rows.length; r++) {
+    const cells = rows[r];
+    const regionRaw = cells[1] ? cells[1].value : null;
+    if (!regionRaw) continue;
+    const code = REGION_CODES[normalize(regionRaw)];
+    if (!code) { unmatched.push(regionRaw); continue; }
+    const entry = { label: regionRaw };
+    fieldCols.forEach(([i, h]) => {
+      const cell = cells[i] || { value: null, color: null };
+      entry[slugify(h)] = { text: cell.value || 'Non renseigné', color: cell.color };
+    });
+    out[code] = entry;
+  }
+
+  return { out, unmatched, regionCount: Object.keys(out).length - 1 };
+}
+
+document.getElementById('file-input').addEventListener('change', async (e) => {
+  const file = e.target.files[0];
+  const result = document.getElementById('result');
+  if (!file) return;
+  result.innerHTML = '<p style="font-size:13px;color:var(--text-muted);">Lecture en cours…</p>';
+  try {
+    const themeName = document.getElementById('theme-name').value.trim() || 'DDEA';
+    const { out, unmatched, regionCount } = await handleFile(file, themeName);
+    const json = JSON.stringify(out, null, 2);
+    const blob = new Blob([json], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    let html = '<p style="font-size:13px;color:var(--text);">' + regionCount + ' région(s) trouvée(s).</p>';
+    if (unmatched.length) {
+      html += '<p style="font-size:13px;color:#a32d2d;">Non reconnues : ' + unmatched.join(', ') + '</p>';
+    }
+    html += '<a href="' + url + '" download="' + themeName + '.json" style="display:inline-block;padding:8px 14px;border-radius:6px;border:1px solid var(--border-strong);background:var(--accent-bg);color:var(--accent-text);text-decoration:none;font-size:14px;font-weight:700;">Télécharger ' + themeName + '.json</a>';
+    result.innerHTML = html;
+  } catch (err) {
+    result.innerHTML = '<p style="font-size:13px;color:#a32d2d;">Erreur : ' + err.message + '</p>';
+  }
+});
+</script>
+</body>
+</html>

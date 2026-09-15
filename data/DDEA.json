@@ -1,0 +1,172 @@
+{
+  "_fields": [
+    [
+      "liste_ddea",
+      "Liste DDEA"
+    ],
+    [
+      "critere_choix_ddea",
+      "critère choix DDEA"
+    ],
+    [
+      "lettre_de_mission_recue_signee",
+      "Lettre de mission reçue ? Signée"
+    ],
+    [
+      "annonce_de_remuneration_de_la_mission",
+      "Annonce de rémunération de la mission"
+    ]
+  ],
+  "IDF": {
+    "label": "Ile-de-France",
+    "liste_ddea": {
+      "text": "78- DIELTIENS Benoît (à confirmer, rien de certain)\n77- PROT Rémi (à confirmer, rien de certain)\n75 - 91 - 92 - 93 - 94 - 95 --> Pas d'EPLEFPA, mission DRIAAF / SRFD",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Aucune information sur le scritères de choix",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Oui sur le principe mais sans précision à ce stade",
+      "color": "#FFFF00"
+    }
+  },
+  "NOR": {
+    "label": "Normandie",
+    "liste_ddea": {
+      "text": "Non renseigné",
+      "color": null
+    },
+    "critere_choix_ddea": {
+      "text": "Normalement le D1 de l'EPL du département",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune information ",
+      "color": "#FF0000"
+    }
+  },
+  "OCC": {
+    "label": "Occitanie",
+    "liste_ddea": {
+      "text": "09- Laurent BORREIL- EPLEFPA Pamiers\n11- Nicolas NOUAIL- EPLEFPA Carcassonne Narbonne\n12- Frédéric REGOURD- EPLEFPA  Rodez\n30-Nathalie COMBES- EPLEFPA Nîmes\n31-Aurore LOUIS- EPLEFPA  Toulouse\n32- Eric GAILLOCHON - EPLEFPA Mirande Riscle\n34- Philippe CAPILLON - EPLEFPA Montpellier\n46-Isabelle ROCH - EPLEFPA Figeac\n48- Laurent CHEVALIER- EPLEFPA  Lozère\n65- Stéphane COURTOIS- EPLEFPA  Vic en Bigorre\n66- Vanessa ALLAUZEN- EPLEFPA  Perpignan\n81-François-Xavier LUGAND - EPLEFPA du Tarn Albi Lavaur\n82- Sandrine MOUTAULT - EPLEFPA  Montauban \n\n",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Choix du SRFD et mel collectif pour nous informer",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune rémunération en 2026, une IFSE complémenaire ou un CIA envisagé en 2027",
+      "color": "#92D050"
+    }
+  },
+  "NAQ": {
+    "label": "Nouvelle-Aquitaine",
+    "liste_ddea": {
+      "text": "16 - Adam Thierry - Eplefpa Angoulême\n17 - Ferreira-Gomes Valérie - Eplefpa Saintes\n19 - Culerier Dominique - Eplefpa Tulles-Nave\n23 - Martin Olivier - Eplefpa Ahuns\n24 -  Buron Pascal - Eplefpa Périgord\n33 - Huet Myriam - Eplefpa Bordeaux Gironde\n40 - Cheret Pierre - Eplefpa Dax\n47 - Leonardi François - Eplefpa Lot et Garonne\n64 - Petit Nicolas - Eplefpa Pau Montardon\n79 - Barmoy Stéphane - Eplefpa Melle-Niort\n86 - Maillet Christophe - Eplefpa Venours\n87 - Genet Jean-Pierre - Eplefpa Limoges",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Concertation / D1 le plus proche de la prefecture",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Une rémunération est annoncée dès 2026 (RIFSEEP, IFSE ou CIA)",
+      "color": "#00B050"
+    }
+  },
+  "ARA": {
+    "label": "Auvergne-Rhône-Alpes",
+    "liste_ddea": {
+      "text": "74  - Emilie Fontaine - EPLEFPA Contamine sur Arve\n01 - JY CORTEY - EPLEFPA Bourg en Bresse\n38 - Thierry Repelin- EPLEFPA La Cote Saint André\n69 - Arnaud DUMAITRE EPLEFPA Saint Genis Laval\n42 - Luc CHAMPIN - EPLEFPA  Montbrison\n03 - Pierre LORNAGE EPLEFPA du Bourbonnais\n26 - Fabien CLAVE - EPLEFPA Valence\n07 - Frédéric RENOULT - EPLEFPA AUBENAS \n63 - Noël Boissonnade -  E¨LEFPA Marmilhat\n43 - Jean François BESSON - EPLEFPA de Brioude \n73 - Jean-Nicolas MAZEAUD - EPLEFPA Chambéry - La Motte Servolex ",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Un présélection a été faite par la DRAAF mais je ne connais pas les critères. ",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Lettre de mission ancienne",
+      "color": "#92D050"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Oui sur le principe mais sans précision à ce stade",
+      "color": "#FFFF00"
+    }
+  },
+  "GES": {
+    "label": "Grand Est",
+    "liste_ddea": {
+      "text": "10 - Stephen BONNESSOEUR - 52 - Frédéric GOLBERG - ",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Parce qu'il n'y a qu'un EPLEFPA dans ces départements, ça devrait ête la même chose pour Grand Est dans les départements 55, 88, 67, 68.",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Oui sur le principe mais sans précision à ce stade",
+      "color": "#FFFF00"
+    }
+  },
+  "BFC": {
+    "label": "Bourgogne-Franche-Comté",
+    "liste_ddea": {
+      "text": "Territoire de Belfort CADIEU Gilles VALDOIE, Haute Saone BERNUSSOU Maud Vesoul, Jura MARTIN Pierre Montmorot, DOUBS GUYOT Marie Besancon, Saone et Loire STRIPPOLI GAY Audrey Fontaines, Cote D'or DERET Ludovic Quetigny Plomblières, Nièvre DUPUITS Guillaume Nevers, Yonne LEBLANC ALBARELLE Michèle Auxerre",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Proposition du SRFD faites aux D1",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune information",
+      "color": "#FF0000"
+    }
+  },
+  "PDL": {
+    "label": "Pays de la Loire",
+    "liste_ddea": {
+      "text": "Non renseigné",
+      "color": null
+    },
+    "critere_choix_ddea": {
+      "text": "Acune info sur les critères de choix",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune information",
+      "color": "#FF0000"
+    }
+  }
+}

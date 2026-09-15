@@ -1,0 +1,161 @@
+:root {
+  --bg: #faf9f6;
+  --panel: #ffffff;
+  --border: #ddd8cc;
+  --border-strong: #b9b2a0;
+  --text: #2c2c2a;
+  --text-muted: #767468;
+  --accent-bg: #dfe9e2;
+  --accent-text: #1f4a34;
+  --accent-border: #6fae8b;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  padding: 32px 16px 64px;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin: 0 0 28px;
+}
+
+.map-shell {
+  position: relative;
+  width: 460px;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.map-image {
+  position: relative;
+  width: 460px;
+  height: 460px;
+  max-width: 100%;
+}
+
+.bubble {
+  position: absolute;
+  border-radius: 18px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel);
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color .15s, border-color .15s, box-shadow .15s;
+}
+
+.bubble.has-data {
+  background: var(--accent-bg);
+  color: var(--accent-text);
+  border-color: var(--accent-border);
+}
+
+.bubble:hover,
+.bubble.active {
+  box-shadow: 0 0 0 2px var(--accent-border);
+}
+
+.bubble.drom {
+  border-style: dashed;
+}
+
+.legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+.swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  border: 1px solid var(--border-strong);
+  display: inline-block;
+}
+
+.controls {
+  margin-top: 28px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--text-muted);
+  display: block;
+  margin-bottom: 6px;
+}
+
+select {
+  width: 240px;
+  max-width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--border-strong);
+  background: var(--panel);
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+#detail {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 18px 20px;
+  min-height: 100px;
+}
+
+.field {
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+}
+
+.field:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.flabel {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 4px;
+}
+
+.fvalue {
+  font-size: 13px;
+  color: #111;
+  margin: 0;
+  white-space: pre-line;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.fvalue.plain {
+  color: var(--text);
+  padding: 0;
+}

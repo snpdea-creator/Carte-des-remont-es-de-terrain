@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SNPDEA - Remontées de terrain</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <h1>Remontées de terrain SNPDEA</h1>
+  <p class="subtitle">Survolez ou touchez une région pour voir le détail du thème sélectionné.</p>
+
+  <div class="map-shell">
+    <div class="map-image">
+      <div class="bubble" data-region="HDF" style="left:180px;top:10px;width:100px;height:55px;">HDF</div>
+      <div class="bubble" data-region="NOR" style="left:60px;top:70px;width:95px;height:55px;">NOR</div>
+      <div class="bubble" data-region="IDF" style="left:190px;top:75px;width:90px;height:50px;">IDF</div>
+      <div class="bubble" data-region="GES" style="left:295px;top:70px;width:110px;height:60px;">GES</div>
+      <div class="bubble" data-region="BRE" style="left:10px;top:140px;width:90px;height:60px;">BRE</div>
+      <div class="bubble" data-region="PDL" style="left:110px;top:145px;width:95px;height:55px;">PDL</div>
+      <div class="bubble" data-region="CVL" style="left:215px;top:140px;width:95px;height:55px;">CVL</div>
+      <div class="bubble" data-region="BFC" style="left:320px;top:140px;width:100px;height:60px;">BFC</div>
+      <div class="bubble" data-region="NAQ" style="left:60px;top:215px;width:140px;height:90px;">NAQ</div>
+      <div class="bubble" data-region="ARA" style="left:280px;top:215px;width:130px;height:90px;">ARA</div>
+      <div class="bubble" data-region="OCC" style="left:110px;top:320px;width:150px;height:80px;">OCC</div>
+      <div class="bubble" data-region="PACACOR" style="left:340px;top:320px;width:100px;height:60px;">PACA-Cor</div>
+      <div class="bubble drom" data-region="DROM" style="left:340px;top:395px;width:100px;height:55px;">DROM-COM</div>
+    </div>
+
+    <div class="legend">
+      <span><span class="swatch" style="background:var(--panel);"></span>Pas de remontée</span>
+      <span><span class="swatch" style="background:var(--accent-bg);"></span>A répondu</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <label for="theme-select">Thème</label>
+    <select id="theme-select">
+      <option value="DDEA">DDEA</option>
+    </select>
+
+    <div id="detail">
+      <p style="font-size:13px;color:var(--text-muted);margin:0;">Survolez une région pour voir le détail complet.</p>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
