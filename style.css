@@ -83,23 +83,9 @@ h1 {
   stroke-width: 1.8;
 }
 
-.region-label {
-  font-size: 9px;
-  font-weight: 700;
-  fill: var(--text-muted);
-  text-anchor: middle;
-  dominant-baseline: middle;
-  pointer-events: none;
-  user-select: none;
-}
-
-.region-label.has-data {
-  fill: var(--accent-text);
-}
-
 .drom-strip {
-  margin-top: 12px;
-  width: 92%;
+  margin-top: 14px;
+  width: 66%;
   max-width: 100%;
 }
 
@@ -108,19 +94,6 @@ h1 {
   width: 100%;
   height: auto;
   overflow: visible;
-}
-
-.drom-label {
-  font-size: 8px;
-  font-weight: 700;
-  fill: var(--text-muted);
-  text-anchor: middle;
-  pointer-events: none;
-  user-select: none;
-}
-
-.drom-label.has-data {
-  fill: var(--accent-text);
 }
 
 .legend {
