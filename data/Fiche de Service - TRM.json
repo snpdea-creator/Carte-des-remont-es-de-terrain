@@ -1,0 +1,133 @@
+{
+  "_fields": [
+    [
+      "date_retour_fiche_de_service",
+      "Date retour fiche de service"
+    ],
+    [
+      "informations_envoi_retour_trm",
+      "Informations envoi - retour TRM"
+    ]
+  ],
+  "IDF": {
+    "label": "Ile-de-France",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "NOR": {
+    "label": "Normandie",
+    "date_retour_fiche_de_service": {
+      "text": "Fin septembre",
+      "color": "#92D050"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "OCC": {
+    "label": "Occitanie",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "NAQ": {
+    "label": "Nouvelle-Aquitaine",
+    "date_retour_fiche_de_service": {
+      "text": "46280",
+      "color": "#92D050"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "envoi avant les vacances de Toussaint - retour le 2 Novembre ",
+      "color": "#92D050"
+    }
+  },
+  "ARA": {
+    "label": "Auvergne-Rhône-Alpes",
+    "date_retour_fiche_de_service": {
+      "text": "46281",
+      "color": "#92D050"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "GES": {
+    "label": "Grand Est",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "BFC": {
+    "label": "Bourgogne-Franche-Comté",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "BRE": {
+    "label": "Bretagne",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "HDF": {
+    "label": "Hauts-de-France",
+    "date_retour_fiche_de_service": {
+      "text": "15-sept - délai au 21-sept pour les nouveaux D2",
+      "color": "#92D050"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "DROM": {
+    "label": "DROM-COM",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
+  "PDL": {
+    "label": "Pays de la Loire",
+    "date_retour_fiche_de_service": {
+      "text": "46280",
+      "color": "#92D050"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "envoi avant les vacances de Toussaint - retour le 2 Novembre ",
+      "color": "#92D050"
+    }
+  }
+}
