@@ -115,7 +115,7 @@
   "GES": {
     "label": "Grand Est",
     "liste_ddea": {
-      "text": "10 - Stephen BONNESSOEUR - 52 - Frédéric GOLBERG - ",
+      "text": "10 - Stephen BONNESSOEUR \n52 - Frédéric GOLBERG ",
       "color": "#92D050"
     },
     "critere_choix_ddea": {
@@ -134,11 +134,49 @@
   "BFC": {
     "label": "Bourgogne-Franche-Comté",
     "liste_ddea": {
-      "text": "Territoire de Belfort CADIEU Gilles VALDOIE, Haute Saone BERNUSSOU Maud Vesoul, Jura MARTIN Pierre Montmorot, DOUBS GUYOT Marie Besancon, Saone et Loire STRIPPOLI GAY Audrey Fontaines, Cote D'or DERET Ludovic Quetigny Plomblières, Nièvre DUPUITS Guillaume Nevers, Yonne LEBLANC ALBARELLE Michèle Auxerre",
+      "text": "90 - CADIEU Gilles - VALDOIE, \n70 - BERNUSSOU Maud - Vesoul\n39 - MARTIN Pierre - Montmorot, \n25 - GUYOT Marie - Besancon, \n71 -  STRIPPOLI GAY Audrey – Fontaines\n21 -  DERET Ludovic - Quetigny Plombières\n58 - DUPUITS Guillaume Nevers\n89 - LEBLANC ALBAREL Michèle - Auxerre",
       "color": "#92D050"
     },
     "critere_choix_ddea": {
       "text": "Proposition du SRFD faites aux D1",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune information",
+      "color": "#FF0000"
+    }
+  },
+  "BRE": {
+    "label": "Bretagne",
+    "liste_ddea": {
+      "text": "22 – Eric Cazassus – EPLEFPA de Caulnes\n29 – Christophe MATRAT – EPLEFPA CMK\n56 – Frédéric Grattepanche – EPLEFPA du Morbihan\n35 – Chef du SRFD",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Choix du SRFD ",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune information",
+      "color": "#FF0000"
+    }
+  },
+  "HDF": {
+    "label": "Hauts-de-France",
+    "liste_ddea": {
+      "text": "Non renseigné",
+      "color": "#92D050"
+    },
+    "critere_choix_ddea": {
+      "text": "Choix du SRFD",
       "color": null
     },
     "lettre_de_mission_recue_signee": {
