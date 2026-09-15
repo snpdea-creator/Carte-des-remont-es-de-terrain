@@ -36,7 +36,7 @@ async function loadTheme(themeName) {
   }
 }
 
-function selectRegion(code) {
+function selectRegion(code, fallbackName) {
   currentRegion = code;
   document.querySelectorAll('[data-region]').forEach((el) => {
     el.classList.toggle('active', el.dataset.region === code);
@@ -44,14 +44,16 @@ function selectRegion(code) {
 
   const detail = document.getElementById('detail');
   const region = currentData[code];
+  const name = (region && region.label) || fallbackName || code;
+
+  let html = '<p style="font-weight:700;font-size:14px;margin:0 0 8px;">' + name + '</p>';
 
   if (!region) {
-    detail.innerHTML =
-      '<p style="font-size:13px;color:var(--text-muted);margin:0;">Aucune remontée pour cette région sur ce thème.</p>';
+    html += '<p style="font-size:13px;color:var(--text-muted);margin:0;">Aucune remontée sur ce thème.</p>';
+    detail.innerHTML = html;
     return;
   }
 
-  let html = '<p style="font-weight:700;font-size:14px;margin:0 0 8px;">' + region.label + '</p>';
   currentFields.forEach(([key, label]) => {
     const f = region[key];
     if (!f) return;
@@ -63,8 +65,11 @@ function selectRegion(code) {
 }
 
 document.querySelectorAll('.region').forEach((el) => {
-  el.addEventListener('mouseenter', () => selectRegion(el.dataset.region));
-  el.addEventListener('click', () => selectRegion(el.dataset.region));
+  // le <title> du tracé SVG sert de nom affiché quand la région n'a pas de données
+  const titleEl = el.querySelector('title');
+  const name = titleEl ? titleEl.textContent : null;
+  el.addEventListener('mouseenter', () => selectRegion(el.dataset.region, name));
+  el.addEventListener('click', () => selectRegion(el.dataset.region, name));
 });
 
 document.getElementById('theme-select').addEventListener('change', (e) => loadTheme(e.target.value));
