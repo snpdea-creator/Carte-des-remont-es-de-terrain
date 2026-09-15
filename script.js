@@ -21,10 +21,10 @@ async function loadTheme(themeName) {
     currentFields = raw._fields || [];
     currentData = raw;
 
-    document.querySelectorAll('.bubble').forEach((b) => {
-      const code = b.dataset.region;
-      b.classList.toggle('has-data', code !== '_fields' && !!currentData[code]);
-      b.classList.remove('active');
+    document.querySelectorAll('[data-region]').forEach((el) => {
+      const code = el.dataset.region;
+      el.classList.toggle('has-data', code !== '_fields' && !!currentData[code]);
+      el.classList.remove('active');
     });
 
     currentRegion = null;
@@ -38,8 +38,8 @@ async function loadTheme(themeName) {
 
 function selectRegion(code) {
   currentRegion = code;
-  document.querySelectorAll('.bubble').forEach((b) => {
-    b.classList.toggle('active', b.dataset.region === code);
+  document.querySelectorAll('[data-region]').forEach((el) => {
+    el.classList.toggle('active', el.dataset.region === code);
   });
 
   const detail = document.getElementById('detail');
@@ -62,9 +62,9 @@ function selectRegion(code) {
   detail.innerHTML = html;
 }
 
-document.querySelectorAll('.bubble').forEach((b) => {
-  b.addEventListener('mouseenter', () => selectRegion(b.dataset.region));
-  b.addEventListener('click', () => selectRegion(b.dataset.region));
+document.querySelectorAll('.region, .bubble').forEach((el) => {
+  el.addEventListener('mouseenter', () => selectRegion(el.dataset.region));
+  el.addEventListener('click', () => selectRegion(el.dataset.region));
 });
 
 document.getElementById('theme-select').addEventListener('change', (e) => loadTheme(e.target.value));
