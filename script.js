@@ -3,8 +3,7 @@
 // thème se limite à : générer data/<NOM>.json avec convert.py, l'ajouter ici,
 // puis ajouter une <option> dans index.html.
 const THEMES = {
-  DDEA: { file: 'data/DDEA.json' },
-  TRM: { file: 'data/TRM.json' }
+  DDEA: { file: 'data/DDEA.json' }
 };
 
 let currentData = {};
@@ -13,20 +12,27 @@ let currentRegion = null;
 
 async function loadTheme(themeName) {
   const cfg = THEMES[themeName];
-  const res = await fetch(cfg.file);
-  const raw = await res.json();
-  currentFields = raw._fields || [];
-  currentData = raw;
+  const detail = document.getElementById('detail');
+  try {
+    const res = await fetch(cfg.file);
+    if (!res.ok) throw new Error('fichier ' + cfg.file + ' introuvable (' + res.status + ')');
+    const raw = await res.json();
+    currentFields = raw._fields || [];
+    currentData = raw;
 
-  document.querySelectorAll('.bubble').forEach((b) => {
-    const code = b.dataset.region;
-    b.classList.toggle('has-data', code !== '_fields' && !!currentData[code]);
-    b.classList.remove('active');
-  });
+    document.querySelectorAll('.bubble').forEach((b) => {
+      const code = b.dataset.region;
+      b.classList.toggle('has-data', code !== '_fields' && !!currentData[code]);
+      b.classList.remove('active');
+    });
 
-  currentRegion = null;
-  document.getElementById('detail').innerHTML =
-    '<p style="font-size:13px;color:var(--text-muted);margin:0;">Survolez une région pour voir le détail complet.</p>';
+    currentRegion = null;
+    detail.innerHTML =
+      '<p style="font-size:13px;color:var(--text-muted);margin:0;">Survolez une région pour voir le détail complet.</p>';
+  } catch (err) {
+    detail.innerHTML =
+      '<p style="font-size:13px;color:#a32d2d;margin:0;">Impossible de charger ce thème : ' + err.message + '</p>';
+  }
 }
 
 function selectRegion(code) {
