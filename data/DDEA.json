@@ -172,15 +172,15 @@
   "HDF": {
     "label": "Hauts-de-France",
     "liste_ddea": {
-      "text": "Non renseigné",
-      "color": null
+      "text": "80 – Fabrice RAULT – Amiens\n60 – Bruno BIENAIME - Airion\n02 – Rhida DJERBI – Crezancy\n62 – Henri Louis BOURGOIS – Arras\n59 – Christophe BRIDIER - Douai",
+      "color": "#92D050"
     },
     "critere_choix_ddea": {
       "text": "Choix du SRFD",
       "color": null
     },
     "lettre_de_mission_recue_signee": {
-      "text": "Pas de lettre de mission",
+      "text": "Pas de lettre de mission, mais Fabrice exerçait déjà une partie des missions auprès de la prefecture notamment (sécurité)",
       "color": "#FF0000"
     },
     "annonce_de_remuneration_de_la_mission": {
