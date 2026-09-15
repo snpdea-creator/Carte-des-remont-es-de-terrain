@@ -4,7 +4,7 @@
 // puis ajouter une <option> dans index.html.
 const THEMES = {
   DDEA: { file: 'data/DDEA.json' },
-    TRM: { file: 'data/TRM.json' }
+  TRM: { file: 'data/TRM.json' }
 };
 
 let currentData = {};
