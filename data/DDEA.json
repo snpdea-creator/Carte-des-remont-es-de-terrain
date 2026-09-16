@@ -188,6 +188,25 @@
       "color": "#FF0000"
     }
   },
+  "CVL": {
+    "label": "Centre-Val de Loire",
+    "liste_ddea": {
+      "text": "Non renseigné",
+      "color": null
+    },
+    "critere_choix_ddea": {
+      "text": "Choix du SRFD",
+      "color": null
+    },
+    "lettre_de_mission_recue_signee": {
+      "text": "Pas de lettre de mission",
+      "color": "#FF0000"
+    },
+    "annonce_de_remuneration_de_la_mission": {
+      "text": "Aucune information",
+      "color": "#FF0000"
+    }
+  },
   "DROM": {
     "label": "DROM-COM",
     "liste_ddea": {
