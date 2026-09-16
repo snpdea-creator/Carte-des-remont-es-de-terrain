@@ -63,7 +63,7 @@ h1 {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
+  aspect-ratio: 400 / 384;
 }
 
 .region {
@@ -99,7 +99,7 @@ h1 {
   display: block;
   width: 100%;
   height: auto;
-  overflow: visible;
+  aspect-ratio: 350 / 62;
 }
 
 .legend {
@@ -187,6 +187,8 @@ select {
 }
 
 .compare {
+  position: relative;
+  z-index: 1;
   margin-top: 40px;
   border-top: 1px solid var(--border);
   padding-top: 24px;
