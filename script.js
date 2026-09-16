@@ -46,6 +46,9 @@ async function loadTheme(themeName) {
     currentRegion = null;
     detail.innerHTML =
       '<p style="font-size:13px;color:var(--text-muted);margin:0;">Survolez une région pour voir le détail complet.</p>';
+
+    fillColumnSelect();
+    renderCompare();
   } catch (err) {
     detail.innerHTML =
       '<p style="font-size:13px;color:#a32d2d;margin:0;">Impossible de charger ce thème : ' + err.message + '</p>';
@@ -87,6 +90,101 @@ document.querySelectorAll('.region').forEach((el) => {
   el.addEventListener('mouseenter', () => selectRegion(el.dataset.region, name));
   el.addEventListener('click', () => selectRegion(el.dataset.region, name));
 });
+
+// --- Vue comparative : une colonne, toutes les régions ---
+
+// Rang de tri d'une couleur de surlignage : rouge d'abord, vert ensuite,
+// cellules non surlignées à la fin. Calculé depuis la teinte, donc n'importe
+// quelle couleur du tableur est classée automatiquement.
+function colorRank(hex) {
+  if (!hex) return 1000;
+  const r = parseInt(hex.slice(1, 3), 16) / 255;
+  const g = parseInt(hex.slice(3, 5), 16) / 255;
+  const b = parseInt(hex.slice(5, 7), 16) / 255;
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  if (max === min) return 900; // gris : juste avant les non surlignées
+  let h;
+  const d = max - min;
+  if (max === r) h = ((g - b) / d) % 6;
+  else if (max === g) h = (b - r) / d + 2;
+  else h = (r - g) / d + 4;
+  h = h * 60;
+  if (h < 0) h += 360;
+  return h;
+}
+
+function fillColumnSelect() {
+  const sel = document.getElementById('col-select');
+  sel.innerHTML = '';
+  currentFields.forEach(([key, label]) => {
+    const opt = document.createElement('option');
+    opt.value = key;
+    opt.textContent = label;
+    sel.appendChild(opt);
+  });
+}
+
+function renderCompare() {
+  const key = document.getElementById('col-select').value;
+  const grid = document.getElementById('cmp-grid');
+  const summary = document.getElementById('cmp-summary');
+  if (!key) {
+    grid.innerHTML = '';
+    summary.innerHTML = '';
+    return;
+  }
+
+  // on ne garde que les régions ayant réellement répondu sur cette colonne
+  const rows = [];
+  Object.keys(currentData).forEach((code) => {
+    if (code === '_fields') return;
+    const region = currentData[code];
+    const f = region[key];
+    if (!f || !f.text || f.text === 'Non renseigné') return;
+    rows.push({
+      code: code,
+      label: DISPLAY_NAMES[code] || region.label || code,
+      text: f.text,
+      color: f.color
+    });
+  });
+
+  if (!rows.length) {
+    summary.innerHTML = '';
+    grid.innerHTML = '<p class="cmp-empty">Aucune région n\'a renseigné cette colonne.</p>';
+    return;
+  }
+
+  rows.sort((a, b) => colorRank(a.color) - colorRank(b.color));
+
+  // compteur des réponses identiques (comparaison insensible à la casse/espaces)
+  const groups = new Map();
+  rows.forEach((r) => {
+    const k = r.text.trim().toLowerCase().replace(/\s+/g, ' ');
+    if (!groups.has(k)) groups.set(k, { text: r.text.trim(), color: r.color, n: 0 });
+    groups.get(k).n += 1;
+  });
+  const repeated = [...groups.values()].filter((g) => g.n > 1).sort((a, b) => b.n - a.n);
+  summary.innerHTML = repeated.length
+    ? repeated.map((g) => {
+        const dot = g.color
+          ? '<span class="cmp-dot" style="background:' + g.color + ';"></span>'
+          : '<span class="cmp-dot"></span>';
+        const short = g.text.length > 60 ? g.text.slice(0, 60) + '…' : g.text;
+        return '<span class="cmp-count">' + dot + short + ' — ' + g.n + ' régions</span>';
+      }).join('')
+    : '<span style="font-size:13px;color:var(--text-muted);">Toutes les réponses sont différentes.</span>';
+
+  grid.innerHTML = rows.map((r) => {
+    const cls = r.color ? 'cmp-value' : 'cmp-value plain';
+    const style = r.color ? ' style="background:' + r.color + ';"' : '';
+    return '<div class="cmp-card"><p class="cmp-region">' + r.label + '</p>' +
+           '<p class="' + cls + '"' + style + '>' + r.text + '</p></div>';
+  }).join('');
+}
+
+document.getElementById('col-select').addEventListener('change', renderCompare);
 
 document.getElementById('theme-select').addEventListener('change', (e) => loadTheme(e.target.value));
 
