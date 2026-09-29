@@ -119,6 +119,17 @@
       "color": "#FF0000"
     }
   },
+  "PACACOR": {
+    "label": "PACA",
+    "date_retour_fiche_de_service": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    },
+    "informations_envoi_retour_trm": {
+      "text": "Aucune information donnée à ce stade",
+      "color": "#FF0000"
+    }
+  },
   "DROM": {
     "label": "DROM-COM",
     "date_retour_fiche_de_service": {
