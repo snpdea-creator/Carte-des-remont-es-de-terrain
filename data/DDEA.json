@@ -252,8 +252,8 @@
       "color": null
     },
     "critere_choix_ddea": {
-      "text": "Acune info sur les critères de choix",
-      "color": null
+      "text": "Appel à candidature en cours",
+      "color": "#FFFF00"
     },
     "lettre_de_mission_recue_signee": {
       "text": "Pas de lettre de mission",
